@@ -9,6 +9,15 @@ var app = new Vue({
             {nombre:'Pera',cantidad:10},
             {nombre:'Uva',cantidad:5},
             {nombre:'Melon',cantidad:0},
-        ]
+        ],
+        nuevaFruta:''
+    },
+    methods:{
+        agregarFruta(){
+            this.frutas.push({
+                nombre:this.nuevaFruta,
+                cantidad:0
+            });
+        }
     }
 })

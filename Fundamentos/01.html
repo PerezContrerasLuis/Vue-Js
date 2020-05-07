@@ -8,11 +8,13 @@
 <body>
     <div id="app">
         {{titulo}}
+        <br/>
+        <input v-model="nuevaFruta"type="text">
+        <button @click="agregarFruta"> Agregar fruta</button>
         <ul>
             <li v-for="fruta in frutas" >{{fruta.cantidad}} -- {{fruta.nombre}}
                 <span v-if="fruta.cantidad == 0"> -- Sin Stock </span>
             </li>
-            
         </ul>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
