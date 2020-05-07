@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{titulo}}
+        <ul>
+            <li v-for="fruta in frutas" >{{fruta.cantidad}} -- {{fruta.nombre}}
+                <span v-if="fruta.cantidad == 0"> -- Sin Stock </span>
+            </li>
+            
+        </ul>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="01.js"></script>
+</body>
+</html>
