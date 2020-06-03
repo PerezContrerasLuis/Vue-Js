@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vuex@3.4.0/dist/vuex.js"></script>
+</head>
+<body>
+    
+    <div id="app">
+         {{titulo}}
+         <padre></padre>
+    </div>
+</body>
+<script>
+     
+
+// creamos primer componente PADRE
+Vue.component('padre',{
+template:`<div>
+            <h1>Numero :{{$store.state.numero}} </h1>
+            <hr/>
+            <hijo></hijo>
+        </div>` 
+})
+
+//creamos segundo componente HIJO
+Vue.component('hijo',{
+    template: 
+    `
+    <button v-on:click="$store.commit('increment')"> + </button>
+
+    `
+});
+
+//Creamos instancia de Vuex
+const store = new Vuex.Store({
+    state :{
+        numero : 7 
+    },
+    mutations: {
+    increment (state) {
+      state.numero++
+    }
+  }
+});
+
+new Vue({
+        el:'#app',
+        store:store,
+        data: {
+            titulo: 'Ejemplo 1 de Vuex usando CDN '
+        }
+    });
+</script>
+</html>
