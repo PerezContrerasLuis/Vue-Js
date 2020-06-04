@@ -20,10 +20,13 @@
 // creamos primer componente PADRE
 Vue.component('padre',{
 template:`<div>
-            <h1>Numero :{{$store.state.numero}} </h1>
+            <h1>Numero :{{numero}} </h1>
             <hr/>
             <hijo></hijo>
-        </div>` 
+        </div>` ,
+computed:{
+    ...Vuex.mapState(['numero'])
+}
 })
 
 //creamos segundo componente HIJO
