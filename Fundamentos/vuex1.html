@@ -33,9 +33,14 @@ computed:{
 Vue.component('hijo',{
     template: 
     `
-    <button v-on:click="$store.commit('increment')"> + </button>
-
-    `
+    <div>
+        <button v-on:click="increment"> + </button>
+        <button v-on:click="decrement"> - </button>
+    </div>
+    `,
+    methods:{
+        ...Vuex.mapMutations(['increment','decrement'])
+    }
 });
 
 //Creamos instancia de Vuex
@@ -46,6 +51,9 @@ const store = new Vuex.Store({
     mutations: {
     increment (state) {
       state.numero++
+    },
+    decrement (state){
+        state.numero--
     }
   }
 });
