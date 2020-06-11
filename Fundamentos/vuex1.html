@@ -36,17 +36,26 @@ Vue.component('hijo',{
     <div>
         <button v-on:click="increment"> + </button>
         <button v-on:click="decrement"> - </button>
+        <button v-on:click="obtenerCursos"> Obtener curos de API </button>
+        <ul v-for="item of cursos">
+            <li>{{item.nombre}}</li>
+        </ul>
     </div>
     `,
+    computed:{
+        ...Vuex.mapState(['cursos'])
+    },
     methods:{
-        ...Vuex.mapMutations(['increment','decrement'])
+        ...Vuex.mapMutations(['increment','decrement']),
+        ...Vuex.mapActions(['obtenerCursos'])
     }
 });
 
 //Creamos instancia de Vuex
 const store = new Vuex.Store({
     state :{
-        numero : 7 
+        numero : 7 ,
+        cursos : []
     },
     mutations: {
     increment (state) {
@@ -54,7 +63,17 @@ const store = new Vuex.Store({
     },
     decrement (state){
         state.numero--
+    },
+    llenarCurso(state,lista){
+        state.cursos = lista;
     }
+  },
+  actions:{
+      obtenerCursos: async function({commit}){
+          const data = await fetch('cursos.json');
+          const lstcursos =  await data.json();
+          commit('llenarCurso',lstcursos);
+      }
   }
 });
 
