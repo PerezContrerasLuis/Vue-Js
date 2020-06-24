@@ -7,7 +7,7 @@
 </template>
 
 <script>
-
+//Importamos componenetes creados
 import Cabecera from './components/Cabecera.vue'
 import Listas from './components/Listas.vue'
 
