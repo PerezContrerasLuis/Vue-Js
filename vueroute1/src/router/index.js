@@ -21,7 +21,12 @@ Vue.use(VueRouter)
   {
     path: '/portafolio',
     name: 'Portafolio',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Portafolio.vue')
+    component: () => import(/* webpackChunkName: "portafolio" */ '../views/Portafolio.vue')
+  },
+  {
+    path: '/fotos/:id',
+    name: 'fotos',
+    component: () => import(/* webpackChunkName: "fotos" */ '../views/Fotos.vue')
   }
 ]
 
