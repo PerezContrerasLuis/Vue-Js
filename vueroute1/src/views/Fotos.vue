@@ -6,6 +6,9 @@
                 <button> foto {{item}} </button>
             </router-link>
         <fotografia />
+        <button @click="home" > Home  </button>
+        <button @click="anterior" > Anterior  </button>
+        <button @click="siguiente" > Siguiente  </button>
     </div>
 </template>
 
@@ -17,6 +20,17 @@ export default {
     },
     data(){
         return { fotosArreglo : [1,2,3,4]}
+    },
+    methods:{
+        home(){
+            this.$router.push('/');
+        }, 
+        anterior(){
+            this.$router.go(-1);
+        }, 
+        siguiente(){
+            this.$router.go(1);
+        }
     }
 }
 </script>
